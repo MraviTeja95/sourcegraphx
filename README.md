@@ -1,5 +1,7 @@
 # SourceGraphX
 <img width="1896" height="862" alt="Screenshot 2026-08-29 105359" src="https://github.com/user-attachments/assets/e6c995b2-92dd-41f1-949c-3668c8e68763" />
+<img width="1892" height="862" alt="Screenshot 2026-08-29 112012" src="https://github.com/user-attachments/assets/27f76915-d7a0-4186-a935-9b5a43e75d6a" />
+
 <img width="1893" height="863" alt="Screenshot 2026-08-29 105428" src="https://github.com/user-attachments/assets/53053670-16b7-4b08-ba01-c74ba0a841e3" />
 
 SourceGraphX is a developer-focused Open Source Project Explorer for discovering projects, versions, packages, maintainers, repositories, tags, and shared dependencies through a graph database.
