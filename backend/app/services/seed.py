@@ -123,28 +123,111 @@ PROJECT_TAGS = [
     ("project-pytorch", "tag-machine-learning"), ("project-pytorch", "tag-python"), ("project-pytorch", "tag-high-performance"),
 ]
 
-VERSION_PACKAGES = [
-    ("version-react-18", ["package-react", "package-react-dom", "package-scheduler", "package-typescript"]),
-    ("version-react-19", ["package-react", "package-react-dom", "package-scheduler", "package-typescript"]),
-    ("version-next-14", ["package-next", "package-react", "package-react-dom", "package-sharp", "package-typescript"]),
-    ("version-next-15", ["package-next", "package-react", "package-react-dom", "package-sharp", "package-typescript"]),
-    ("version-vue-3", ["package-vue", "package-vue-router", "package-pinia", "package-typescript"]),
-    ("version-vue-2", ["package-vue", "package-vue-router", "package-typescript"]),
-    ("version-angular-18", ["package-angular-core", "package-rxjs", "package-zone", "package-typescript"]),
-    ("version-angular-20", ["package-angular-core", "package-rxjs", "package-zone", "package-typescript"]),
-    ("version-django-4", ["package-django", "package-asgiref", "package-sqlparse", "package-click"]),
-    ("version-django-5", ["package-django", "package-asgiref", "package-sqlparse", "package-click"]),
-    ("version-fastapi-0-1", ["package-fastapi", "package-starlette", "package-pydantic", "package-click"]),
-    ("version-fastapi-0-2", ["package-fastapi", "package-starlette", "package-pydantic", "package-click"]),
-    ("version-flask-2", ["package-flask", "package-werkzeug", "package-jinja", "package-click"]),
-    ("version-flask-3", ["package-flask", "package-werkzeug", "package-jinja", "package-click"]),
-    ("version-express-4", ["package-express", "package-body-parser", "package-debug", "package-lodash"]),
-    ("version-express-5", ["package-express", "package-body-parser", "package-debug", "package-lodash"]),
-    ("version-tensorflow-2-15", ["package-tensorflow", "package-numpy", "package-keras", "package-pytest"]),
-    ("version-tensorflow-2-19", ["package-tensorflow", "package-numpy", "package-keras", "package-pytest"]),
-    ("version-pytorch-2-5", ["package-pytorch", "package-numpy", "package-pytest", "package-typescript"]),
-    ("version-pytorch-2-7", ["package-pytorch", "package-numpy", "package-pytest", "package-typescript"]),
-]
+DEPENDENCY_METADATA = {
+    "version-react-18": [("loose-envify", "npm", "^1.1.0", "runtime")],
+    "version-react-19": [],
+    "version-next-14": [
+        ("busboy", "npm", "1.6.0", "runtime"), ("postcss", "npm", "8.4.31", "runtime"),
+        ("@next/env", "npm", "14.2.31", "runtime"), ("styled-jsx", "npm", "5.1.1", "runtime"),
+        ("graceful-fs", "npm", "^4.2.11", "runtime"), ("@swc/helpers", "npm", "0.5.5", "runtime"),
+        ("caniuse-lite", "npm", "^1.0.30001579", "runtime"),
+        ("react", "npm", "^18.2.0", "peer"), ("react-dom", "npm", "^18.2.0", "peer"),
+    ],
+    "version-next-15": [
+        ("postcss", "npm", "8.4.31", "runtime"), ("@next/env", "npm", "15.5.2", "runtime"),
+        ("styled-jsx", "npm", "5.1.6", "runtime"), ("@swc/helpers", "npm", "0.5.15", "runtime"),
+        ("caniuse-lite", "npm", "^1.0.30001579", "runtime"), ("react", "npm", "^18.2.0 || ^19.0.0", "peer"),
+        ("react-dom", "npm", "^18.2.0 || ^19.0.0", "peer"), ("sharp", "npm", "^0.34.3", "optional"),
+    ],
+    "version-vue-2": [("csstype", "npm", "^3.1.0", "runtime"), ("@vue/compiler-sfc", "npm", "2.7.16", "runtime")],
+    "version-vue-3": [
+        ("@vue/shared", "npm", "3.5.20", "runtime"), ("@vue/runtime-dom", "npm", "3.5.20", "runtime"),
+        ("@vue/compiler-dom", "npm", "3.5.20", "runtime"), ("@vue/compiler-sfc", "npm", "3.5.20", "runtime"),
+        ("@vue/server-renderer", "npm", "3.5.20", "runtime"), ("typescript", "npm", "*", "peer"),
+    ],
+    "version-angular-18": [("tslib", "npm", "^2.3.0", "runtime"), ("rxjs", "npm", "^6.5.3 || ^7.4.0", "peer"), ("zone.js", "npm", "~0.14.10", "peer")],
+    "version-angular-20": [("tslib", "npm", "^2.3.0", "runtime"), ("rxjs", "npm", "^6.5.3 || ^7.4.0", "peer"), ("zone.js", "npm", "~0.15.0", "peer"), ("@angular/compiler", "npm", "20.1.6", "peer")],
+    "version-django-4": [("asgiref", "pypi", "<4,>=3.6.0", "runtime"), ("sqlparse", "pypi", ">=0.3.1", "runtime"), ("tzdata", "pypi", "*", "runtime", "sys_platform == 'win32'")],
+    "version-django-5": [("asgiref", "pypi", ">=3.8.1", "runtime"), ("sqlparse", "pypi", ">=0.3.1", "runtime"), ("tzdata", "pypi", "*", "runtime", "sys_platform == 'win32'")],
+    "version-fastapi-0-1": [("starlette", "pypi", "<0.47.0,>=0.40.0", "runtime"), ("pydantic", "pypi", ">=1.7.4,<3.0.0", "runtime"), ("typing-extensions", "pypi", ">=4.8.0", "runtime")],
+    "version-fastapi-0-2": [("starlette", "pypi", "<0.48.0,>=0.40.0", "runtime"), ("pydantic", "pypi", ">=1.7.4,<3.0.0", "runtime"), ("typing-extensions", "pypi", ">=4.8.0", "runtime")],
+    "version-flask-2": [
+        ("Werkzeug", "pypi", ">=2.3.7", "runtime"), ("Jinja2", "pypi", ">=3.1.2", "runtime"),
+        ("itsdangerous", "pypi", ">=2.1.2", "runtime"), ("click", "pypi", ">=8.1.3", "runtime"), ("blinker", "pypi", ">=1.6.2", "runtime"),
+    ],
+    "version-flask-3": [
+        ("blinker", "pypi", ">=1.9.0", "runtime"), ("click", "pypi", ">=8.1.3", "runtime"),
+        ("itsdangerous", "pypi", ">=2.2.0", "runtime"), ("Jinja2", "pypi", ">=3.1.2", "runtime"),
+        ("MarkupSafe", "pypi", ">=2.1.1", "runtime"), ("Werkzeug", "pypi", ">=3.1.0", "runtime"),
+    ],
+    "version-express-4": [
+        ("qs", "npm", "6.13.0", "runtime"), ("depd", "npm", "2.0.0", "runtime"), ("etag", "npm", "~1.8.1", "runtime"),
+        ("send", "npm", "0.19.0", "runtime"), ("vary", "npm", "~1.1.2", "runtime"), ("debug", "npm", "2.6.9", "runtime"),
+        ("fresh", "npm", "0.5.2", "runtime"), ("cookie", "npm", "0.7.1", "runtime"), ("accepts", "npm", "~1.3.8", "runtime"),
+        ("methods", "npm", "~1.1.2", "runtime"), ("type-is", "npm", "~1.6.18", "runtime"), ("parseurl", "npm", "~1.3.3", "runtime"),
+        ("statuses", "npm", "2.0.1", "runtime"), ("encodeurl", "npm", "~2.0.0", "runtime"), ("proxy-addr", "npm", "~2.0.7", "runtime"),
+        ("body-parser", "npm", "1.20.3", "runtime"), ("escape-html", "npm", "~1.0.3", "runtime"), ("http-errors", "npm", "2.0.0", "runtime"),
+        ("on-finished", "npm", "2.4.1", "runtime"), ("safe-buffer", "npm", "5.2.1", "runtime"), ("utils-merge", "npm", "1.0.1", "runtime"),
+        ("content-type", "npm", "~1.0.4", "runtime"), ("finalhandler", "npm", "1.3.1", "runtime"), ("range-parser", "npm", "~1.2.1", "runtime"),
+        ("serve-static", "npm", "1.16.2", "runtime"), ("array-flatten", "npm", "1.1.1", "runtime"), ("path-to-regexp", "npm", "0.1.12", "runtime"),
+        ("setprototypeof", "npm", "1.2.0", "runtime"), ("cookie-signature", "npm", "1.0.6", "runtime"), ("merge-descriptors", "npm", "1.0.3", "runtime"),
+        ("content-disposition", "npm", "0.5.4", "runtime"),
+    ],
+    "version-express-5": [
+        ("qs", "npm", "^6.14.0", "runtime"), ("etag", "npm", "^1.8.1", "runtime"), ("once", "npm", "^1.4.0", "runtime"),
+        ("send", "npm", "^1.1.0", "runtime"), ("vary", "npm", "^1.1.2", "runtime"), ("debug", "npm", "^4.4.0", "runtime"),
+        ("fresh", "npm", "^2.0.0", "runtime"), ("cookie", "npm", "^0.7.1", "runtime"), ("router", "npm", "^2.2.0", "runtime"),
+        ("accepts", "npm", "^2.0.0", "runtime"), ("type-is", "npm", "^2.0.1", "runtime"), ("parseurl", "npm", "^1.3.3", "runtime"),
+        ("statuses", "npm", "^2.0.0", "runtime"), ("encodeurl", "npm", "^2.0.0", "runtime"), ("mime-types", "npm", "^3.0.0", "runtime"),
+        ("proxy-addr", "npm", "^2.0.7", "runtime"), ("body-parser", "npm", "^2.2.0", "runtime"), ("escape-html", "npm", "^1.0.3", "runtime"),
+        ("http-errors", "npm", "^2.0.0", "runtime"), ("on-finished", "npm", "^2.4.1", "runtime"), ("content-type", "npm", "^1.0.5", "runtime"),
+        ("finalhandler", "npm", "^2.1.0", "runtime"), ("range-parser", "npm", "^1.2.1", "runtime"), ("serve-static", "npm", "^2.2.0", "runtime"),
+        ("cookie-signature", "npm", "^1.2.1", "runtime"), ("merge-descriptors", "npm", "^2.0.0", "runtime"), ("content-disposition", "npm", "^1.0.0", "runtime"),
+    ],
+    "version-tensorflow-2-15": [
+        ("absl-py", "pypi", ">=1.0.0", "runtime"), ("astunparse", "pypi", ">=1.6.0", "runtime"), ("flatbuffers", "pypi", ">=23.5.26", "runtime"),
+        ("gast", "pypi", ">=0.2.1,!=0.5.0,!=0.5.1,!=0.5.2", "runtime"), ("google-pasta", "pypi", ">=0.1.1", "runtime"),
+        ("h5py", "pypi", ">=2.9.0", "runtime"), ("libclang", "pypi", ">=13.0.0", "runtime"), ("ml-dtypes", "pypi", "~=0.3.1", "runtime"),
+        ("numpy", "pypi", ">=1.23.5,<2.0.0", "runtime"), ("opt-einsum", "pypi", ">=2.3.2", "runtime"), ("packaging", "pypi", "*", "runtime"),
+        ("protobuf", "pypi", ">=3.20.3,<5.0.0dev", "runtime"), ("setuptools", "pypi", "*", "runtime"), ("six", "pypi", ">=1.12.0", "runtime"),
+        ("termcolor", "pypi", ">=1.1.0", "runtime"), ("typing-extensions", "pypi", ">=3.6.6", "runtime"), ("wrapt", "pypi", ">=1.11.0,<1.15", "runtime"),
+        ("tensorflow-io-gcs-filesystem", "pypi", ">=0.23.1", "runtime"), ("grpcio", "pypi", ">=1.24.3,<2.0", "runtime"),
+        ("tensorboard", "pypi", ">=2.15,<2.16", "runtime"), ("tensorflow-estimator", "pypi", ">=2.15.0,<2.16", "runtime"), ("keras", "pypi", ">=2.15.0,<2.16", "runtime"),
+    ],
+    "version-tensorflow-2-19": [
+        ("absl-py", "pypi", ">=1.0.0", "runtime"), ("astunparse", "pypi", ">=1.6.0", "runtime"), ("flatbuffers", "pypi", ">=24.3.25", "runtime"),
+        ("gast", "pypi", ">=0.2.1,!=0.5.0,!=0.5.1,!=0.5.2", "runtime"), ("google-pasta", "pypi", ">=0.1.1", "runtime"),
+        ("libclang", "pypi", ">=13.0.0", "runtime"), ("opt-einsum", "pypi", ">=2.3.2", "runtime"), ("packaging", "pypi", "*", "runtime"),
+        ("protobuf", "pypi", ">=3.20.3,<6.0.0dev", "runtime"), ("requests", "pypi", ">=2.21.0,<3", "runtime"), ("setuptools", "pypi", "*", "runtime"),
+        ("six", "pypi", ">=1.12.0", "runtime"), ("termcolor", "pypi", ">=1.1.0", "runtime"), ("typing-extensions", "pypi", ">=3.6.6", "runtime"),
+        ("wrapt", "pypi", ">=1.11.0", "runtime"), ("grpcio", "pypi", ">=1.24.3,<2.0", "runtime"), ("tensorboard", "pypi", "~=2.19.0", "runtime"),
+        ("keras", "pypi", ">=3.5.0", "runtime"), ("numpy", "pypi", ">=1.26.0,<2.2.0", "runtime"), ("h5py", "pypi", ">=3.11.0", "runtime"), ("ml-dtypes", "pypi", ">=0.5.1,<1.0.0", "runtime"),
+    ],
+    "version-pytorch-2-5": [("filelock", "pypi", "*", "runtime"), ("typing-extensions", "pypi", ">=4.8.0", "runtime"), ("networkx", "pypi", "*", "runtime"), ("jinja2", "pypi", "*", "runtime"), ("fsspec", "pypi", "*", "runtime"), ("sympy", "pypi", "==1.13.1", "runtime")],
+    "version-pytorch-2-7": [("filelock", "pypi", "*", "runtime"), ("typing-extensions", "pypi", ">=4.10.0", "runtime"), ("setuptools", "pypi", "*", "runtime"), ("sympy", "pypi", ">=1.13.3", "runtime"), ("networkx", "pypi", "*", "runtime"), ("jinja2", "pypi", "*", "runtime"), ("fsspec", "pypi", "*", "runtime")],
+}
+
+
+def _package_id(name: str, ecosystem: str) -> str:
+    for package in PACKAGES:
+        if package["name"].lower() == name.lower() and package["ecosystem"] == ecosystem:
+            return package["id"]
+    prefix = "npm" if ecosystem == "npm" else "pypi"
+    normalized = "".join(character if character.isalnum() else "-" for character in name.lower()).strip("-")
+    return f"package-{prefix}-{normalized}"
+
+
+def _extend_package_catalog() -> None:
+    existing = {(package["name"].lower(), package["ecosystem"]) for package in PACKAGES}
+    for dependencies in DEPENDENCY_METADATA.values():
+        for dependency in dependencies:
+            name, ecosystem = dependency[0], dependency[1]
+            if (name.lower(), ecosystem) not in existing:
+                PACKAGES.append({"id": _package_id(name, ecosystem), "name": name, "ecosystem": ecosystem})
+                existing.add((name.lower(), ecosystem))
+
+
+_extend_package_catalog()
 
 CONSTRAINTS = [
     "CREATE CONSTRAINT project_id_unique IF NOT EXISTS FOR (n:Project) REQUIRE n.id IS UNIQUE",
@@ -171,6 +254,7 @@ def _create_nodes(session: Session) -> None:
 
 
 def _create_relationships(session: Session) -> None:
+    _run(session, "MATCH ()-[relationship:DEPENDS_ON]->() DELETE relationship")
     _run(session, """
         MATCH (project:Project), (version:Version)
         WHERE version.project_id = project.id
@@ -179,8 +263,16 @@ def _create_relationships(session: Session) -> None:
     _run(session, """
         UNWIND $rows AS row
         MATCH (version:Version {id: row.version_id}), (package:Package {id: row.package_id})
-        MERGE (version)-[:DEPENDS_ON]->(package)
-    """, {"rows": [{"version_id": version_id, "package_id": package_id} for version_id, package_ids in VERSION_PACKAGES for package_id in package_ids]})
+        MERGE (version)-[dependency:DEPENDS_ON]->(package)
+        SET dependency.version_constraint = row.version_constraint,
+            dependency.dependency_type = row.dependency_type,
+            dependency.environment_marker = row.environment_marker
+    """, {"rows": [
+        {"version_id": version_id, "package_id": _package_id(name, ecosystem), "version_constraint": constraint, "dependency_type": dependency_type, "environment_marker": marker if len(dependency) > 4 else None}
+        for version_id, dependencies in DEPENDENCY_METADATA.items()
+        for dependency in dependencies
+        for name, ecosystem, constraint, dependency_type, *marker in [dependency]
+    ]})
     _run(session, """
         MATCH (project:Project), (maintainer:Maintainer)
         WHERE maintainer.id = CASE project.id
@@ -229,9 +321,32 @@ def collect_validation(session: Session) -> dict:
     }
     versions_with_dependencies = session.run("MATCH (version:Version)-[:DEPENDS_ON]->() RETURN count(DISTINCT version) AS count").single()["count"]
     analysis_paths = session.run("MATCH path=(project:Project)-[:HAS_VERSION]->(:Version)-[:DEPENDS_ON]->(:Package) RETURN count(path) AS count").single()["count"]
+    dependencies_per_version = session.run("""
+        MATCH (version:Version)
+        OPTIONAL MATCH (version)-[:DEPENDS_ON]->(package:Package)
+        RETURN version.id AS version_id, version.version AS version, count(package) AS dependency_count
+        ORDER BY version_id
+    """).data()
+    zero_dependency_versions = session.run("MATCH (version:Version) WHERE NOT (version)-[:DEPENDS_ON]->() RETURN count(version) AS count").single()["count"]
+    self_dependencies = session.run("""
+        MATCH (project:Project)-[:HAS_VERSION]->(version:Version)-[:DEPENDS_ON]->(package:Package)
+        WHERE toLower(package.name) = toLower(project.name)
+        RETURN count(*) AS count
+    """).single()["count"]
+    duplicate_mappings = session.run("""
+        MATCH (version:Version)-[:DEPENDS_ON]->(package:Package)
+        WITH version.id AS version_id, package.id AS package_id, count(*) AS mapping_count
+        WHERE mapping_count > 1
+        RETURN count(*) AS count
+    """).single()["count"]
+    dangling_references = session.run("""
+        MATCH (source)-[dependency:DEPENDS_ON]->(target)
+        WHERE NOT source:Version OR NOT target:Package
+        RETURN count(dependency) AS count
+    """).single()["count"]
     shared_dependency_packages = session.run("""
         MATCH (first_project:Project)-[:HAS_VERSION]->(:Version)-[:DEPENDS_ON]->(package:Package)<-[:DEPENDS_ON]-(:Version)<-[:HAS_VERSION]-(second_project:Project)
         WHERE first_project <> second_project
         RETURN count(DISTINCT package) AS count
     """).single()["count"]
-    return {"total_nodes": total_nodes, "total_relationships": total_relationships, "labels": labels, "relationship_types": relationship_types, "missing": missing, "versions_with_dependencies": versions_with_dependencies, "analysis_paths": analysis_paths, "shared_dependency_packages": shared_dependency_packages}
+    return {"total_nodes": total_nodes, "total_relationships": total_relationships, "labels": labels, "relationship_types": relationship_types, "missing": missing, "versions_with_dependencies": versions_with_dependencies, "analysis_paths": analysis_paths, "shared_dependency_packages": shared_dependency_packages, "dependencies_per_version": dependencies_per_version, "zero_dependency_versions": zero_dependency_versions, "self_dependencies": self_dependencies, "duplicate_mappings": duplicate_mappings, "dangling_references": dangling_references}

@@ -21,6 +21,13 @@ def main() -> None:
         print(f"Versions with dependencies: {validation['versions_with_dependencies']}")
         print(f"Dependency analysis paths: {validation['analysis_paths']}")
         print(f"Shared dependency packages: {validation['shared_dependency_packages']}")
+        print("Dependencies per version:")
+        for item in validation["dependencies_per_version"]:
+            print(f"  {item['version_id']}: {item['dependency_count']}")
+        print(f"Versions with zero dependencies: {validation['zero_dependency_versions']}")
+        print(f"Self-dependencies: {validation['self_dependencies']}")
+        print(f"Suspicious duplicate mappings: {validation['duplicate_mappings']}")
+        print(f"Dangling dependency references: {validation['dangling_references']}")
     except Exception as error:
         raise SystemExit(f"Seed failed: {type(error).__name__}") from None
     finally:

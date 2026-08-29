@@ -8,8 +8,8 @@ export function Header() {
         <span>SourceGraph<span className="brand-accent">X</span></span>
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
-        <Link href="/">Explore</Link>
-        <a href="#search">Search</a>
+        <Link href="/#explore">Explore</Link>
+        <Link href="/search">Search</Link>
         <a href="http://localhost:8000/docs" target="_blank" rel="noreferrer">API docs <span aria-hidden="true">↗</span></a>
       </nav>
       <span className="status-pill"><span className="status-dot" /> API online</span>
